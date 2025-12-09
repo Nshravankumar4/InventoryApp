@@ -8,12 +8,12 @@ A simple, modern inventory management application built with Qt5 and C++17.
 - ✅ View all inventory items in a list
 - ✅ Delete items from inventory
 - ✅ Persistent storage using text file
-- ✅ Clean Qt Widgets GUI interface
+- ✅ Clean Qt Widgets GUI interface 
 - ✅ Modern CMake build system
 
 ---
 
-## 🗂️ Project Structure
+## 🗂️ Project Structure 
 
 ```
 InventoryApp/
