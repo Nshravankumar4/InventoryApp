@@ -13,7 +13,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [windows-latest]  # start with Windows only; add ubuntu later if you install Qt there
+        os: [windows-latest]
         build_type: [Release]
         c_compiler: [cl]
         include:
@@ -22,7 +22,8 @@ jobs:
             cpp_compiler: cl
 
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout
+      uses: actions/checkout@v4
 
     # Install Qt on Windows
     - name: Install Qt
@@ -49,7 +50,6 @@ jobs:
         -DCMAKE_PREFIX_PATH="${{ env.QT_ROOT_DIR }}"
         -S "${{ github.workspace }}"
       env:
-        # install-qt-action sets QT_ROOT_DIR / QT_DIR; QT_ROOT_DIR works here
         QT_ROOT_DIR: ${{ env.QT_ROOT_DIR }}
 
     - name: Build
