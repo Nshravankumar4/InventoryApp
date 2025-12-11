@@ -6,6 +6,8 @@ set(CMAKE_CXX_STANDARD 17)
 # Qt installation path
 set(CMAKE_PREFIX_PATH "C:/Qt/5.15.2/msvc2019_64")
 
+option(AP_BULLSEYE_CODE_COVERAGE_ENABLED "Enable BULLSEYE Code Coverage tool" OFF)
+
 # Enable automatic Qt processing
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
@@ -89,6 +91,17 @@ if(BUILD_TESTS)
     message(STATUS "Google Test enabled - Run tests with: ctest or InventoryAppTests")
 endif()
 
+if(APP_BULLSEYE_CODE_COVERAGE_ENABLED)
+    set(NSK_CMAKE_BULLSEYE_CODE_COVERAGE ON)
+else()
+    set(NSK_CMAKE_BULLSEYE_CODE_COVERAGE OFF)
+endif()
+
+if(RAMP_CMAKE_BULLSEYE_CODE_COVERAGE)
+    set(CMAKE_C_COMPILER "C:/Program Files/BullseyeCoverage/bin/cl.exe")
+    set(CMAKE_CXX_COMPILER "C:/Program Files/BullseyeCoverage/bin/cl.exe")
+    set(CMAKE_LINKER "C:/Program Files/BullseyeCoverage/bin/link.exe")
+endif()
 # ==========================================
 # Summary
 # ==========================================
@@ -99,4 +112,5 @@ message(STATUS "==============================================")
 message(STATUS "Qt5 Path: ${CMAKE_PREFIX_PATH}")
 message(STATUS "Build Tests: ${BUILD_TESTS}")
 message(STATUS "C++ Standard: ${CMAKE_CXX_STANDARD}")
+message(STATUS "BULLSEYE_CODE_COVERAGE_ENABLED: ${APP_BULLSEYE_CODE_COVERAGE_ENABLED}")
 message(STATUS "==============================================")
